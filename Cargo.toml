@@ -1,0 +1,12 @@
+[package]
+name = "my_first_rust_api"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [".", "entity", "api", "migration"]
+
+[dependencies]
+entity = {path = "entity"}
+api = {path = "api"}
+migration = {path = "migration"}
