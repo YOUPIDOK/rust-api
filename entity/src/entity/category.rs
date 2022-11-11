@@ -1,8 +1,6 @@
 use serde::{Deserialize, Serialize};
 use sea_orm::entity::prelude::*;
 
-pub const TABLE: &str = "categories";
-
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "categories")]
 pub struct Model {
@@ -15,3 +13,8 @@ pub struct Model {
 pub enum Relation {}
 
 impl ActiveModelBehavior for ActiveModel {}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UpdateModel {
+    pub label: String,
+}

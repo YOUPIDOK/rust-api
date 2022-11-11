@@ -5,6 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "entity"
+path = "src/lib.rs"
+
 [dependencies]
 sea-orm = {version = "^0.10.1", features = ["debug-print", "runtime-async-std-native-tls", "sqlx-sqlite"]}
 serde = { version = "1.0.142", features=["derive"] }

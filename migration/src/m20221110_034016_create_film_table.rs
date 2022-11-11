@@ -1,6 +1,4 @@
-use sea_orm::{ColumnDef, DbErr, sea_query};
-use sea_orm::sea_query::SimpleExpr::Column;
-use entity::category::*;
+use entity::entity::category::*;
 use sea_orm_migration::prelude::*;
 
 #[derive(DeriveMigrationName)]

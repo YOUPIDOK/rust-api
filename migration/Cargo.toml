@@ -11,4 +11,10 @@ path = "src/lib.rs"
 [dependencies]
 entity = { path = "../entity" }
 async-std = { version = "^1", features = ["attributes", "tokio1"] }
-sea-orm = {version = "^0.10.1", features = ["debug-print", "runtime-async-std-native-tls", "sqlx-sqlite"]}
+
+[dependencies.sea-orm-migration]
+version = "^0.10.0"
+features = [
+  "runtime-async-std-native-tls",
+  "sqlx-sqlite",
+]

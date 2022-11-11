@@ -1,12 +1,12 @@
-use sea_orm::{DatabaseConnection, Database};
+use sea_orm::DatabaseConnection;
 
 #[derive(Debug, Clone)]
 pub struct AppState {
     pub(crate) conn: DatabaseConnection,
 }
 
-pub async fn init() -> AppState{
+pub async fn init(conn: DatabaseConnection) -> AppState{
     AppState {
-        conn: Database::connect("sqlite::memory:").await.unwrap()
+        conn
     }
 }
