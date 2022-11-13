@@ -1,5 +1,5 @@
 use sea_orm::{
-    entity::ActiveValue, ActiveModelTrait, DatabaseConnection, DbErr, DeleteResult, EntityTrait,
+    entity::ActiveValue, ActiveModelTrait, DatabaseConnection, DbErr, DeleteResult,
     IntoActiveModel, ModelTrait,
 };
 use crate::entity;

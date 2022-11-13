@@ -6,5 +6,4 @@ TODO :
     - Category repo (safe delete)
     - Fixtures
         - Film 
-        - Category
     - Film by category

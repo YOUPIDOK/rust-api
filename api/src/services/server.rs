@@ -31,7 +31,7 @@ fn categories_config(cfg: &mut web::ServiceConfig) {
         .route("/categories/{id}", web::get().to(category_controller::find))
         .route("/categories", web::get().to(category_controller::find_all))
         .route("/categories/{id}", web::put().to(category_controller::update))
-        // .route("/categories/{id}", web::delete().to(category_controller::delete))
+        .route("/categories/{id}", web::delete().to(category_controller::delete))
     ;
 }
 
@@ -56,6 +56,6 @@ async fn get_conn() -> DatabaseConnection {
 async fn fixtures(load_fixtures: bool, conn: &DatabaseConnection) {
     if load_fixtures {
         entity::fixtures::category_fixtures::load(&conn).await;
-        // TODO : Load film fixtures
+        entity::fixtures::film_fixtures::load(&conn).await;
     }
 }

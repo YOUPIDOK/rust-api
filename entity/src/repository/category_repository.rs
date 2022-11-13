@@ -37,9 +37,9 @@ pub async fn update(
     }
 }
 
-// pub async fn delete(id: i32, conn: &DatabaseConnection) -> Result<Option<DeleteResult>, DbErr> {
-//     match Entity::find_by_id(id).one(conn).await? {
-//         Some(entity) => Ok(Some(entity.delete(conn).await?)),
-//         None => Ok(None),
-//     }
-// }
+pub async fn delete(id: i32, conn: &DatabaseConnection) -> Result<Option<DeleteResult>, DbErr> {
+    match Entity::find_by_id(id).one(conn).await? {
+        Some(entity) => Ok(Some(entity.delete(conn).await?)),
+        None => Ok(None),
+    }
+}
