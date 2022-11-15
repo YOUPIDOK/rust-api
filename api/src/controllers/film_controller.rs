@@ -32,7 +32,7 @@ pub async fn find(
 }
 
 pub async fn find_by_category(
-    app_state: web::Data<AppState>,
+    // app_state: web::Data<AppState>,
     id: web::Path<String>,
 ) -> impl Responder {
     let id = id.into_inner();
