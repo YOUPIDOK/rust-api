@@ -9,12 +9,21 @@ pub struct Model {
     pub label: String
 }
 
-#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
-pub enum Relation {}
-
 impl ActiveModelBehavior for ActiveModel {}
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct UpdateModel {
     pub label: String,
+}
+
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
+pub enum Relation {
+    #[sea_orm(has_many = "super::film::Entity")]
+    Film,
+}
+
+impl Related<super::film::Entity> for Entity {
+    fn to() -> RelationDef {
+        Relation::Film.def()
+    }
 }

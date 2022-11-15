@@ -37,12 +37,12 @@ fn categories_config(cfg: &mut web::ServiceConfig) {
 
 fn film_config(cfg: &mut web::ServiceConfig) {
     cfg
-        // .route("/films", web::post().to(film_controller::create))
-        // .route("/films/{id}", web::get().to(film_controller::find))
-        // .route("/films", web::get().to(film_controller::find_all))
-        // .route("/films", web::get().to(film_controller::find_by_catgegory))
-        // .route("/films/{id}", web::patch().to(film_controller::update))
-        // .route("/films/{id}", web::delete().to(film_controller::delete))
+        .route("/films", web::post().to(film_controller::create))
+        .route("/films/{id}", web::get().to(film_controller::find))
+        .route("/films", web::get().to(film_controller::find_all))
+        .route("/films/by-category/{id}", web::get().to(film_controller::find_by_category))
+        .route("/films/{id}", web::patch().to(film_controller::update))
+        .route("/films/{id}", web::delete().to(film_controller::delete))
     ;
 }
 

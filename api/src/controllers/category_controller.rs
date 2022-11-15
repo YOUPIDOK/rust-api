@@ -1,13 +1,13 @@
 use actix_web::{HttpResponse, Responder, web};
-use entity::entity::category::UpdateModel;
+use entity::entity::category::UpdateModel as Category;
 use entity::repository::category_repository;
 use crate::services::app_state::AppState;
 
-pub async fn create(category: web::Json<UpdateModel>, app_state: web::Data<AppState>) -> impl Responder {
+pub async fn create(category: web::Json<Category>, app_state: web::Data<AppState>) -> impl Responder {
     println!("category_controller::create()");
 
     match category_repository::create(category.label.to_string(), &app_state.conn).await {
-        Ok(user) => HttpResponse::Ok().json(user),
+        Ok(category) => HttpResponse::Ok().json(category),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
 }
@@ -35,7 +35,7 @@ pub async fn find_all(app_state: web::Data<AppState>) -> impl Responder {
     println!("category_controller::find_all()");
 
     match category_repository::find_all(&app_state.conn).await {
-        Ok(users) => HttpResponse::Ok().json(users),
+        Ok(categories) => HttpResponse::Ok().json(categories),
         Err(err) => HttpResponse::InternalServerError().body(err.to_string()),
     }
 }
@@ -43,15 +43,15 @@ pub async fn find_all(app_state: web::Data<AppState>) -> impl Responder {
 pub async fn update(
     app_state: web::Data<AppState>,
     id: web::Path<String>,
-    catgeory: web::Json<UpdateModel>,
+    catgeory: web::Json<Category>,
 ) -> impl Responder {
     let id = id.into_inner();
     println!("category_controller::update({})", &id);
 
      match id.parse::<i32>() {
         Ok(id) => match category_repository::update(id,catgeory.into_inner(), &app_state.conn ).await {
-            Ok(user_option) => match user_option {
-                Some(user) => HttpResponse::Ok().json(user),
+            Ok(catgeory_option) => match catgeory_option {
+                Some(category) => HttpResponse::Ok().json(category),
                 None => HttpResponse::NotFound().body("Category not found"),
             },
             Err(err) => HttpResponse::InternalServerError().body(err.to_string()),

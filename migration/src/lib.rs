@@ -1,6 +1,7 @@
 pub use sea_orm_migration::prelude::*;
 
-mod m20221110_034016_create_film_table;
+mod create_category_table;
+mod create_film_table;
 
 pub struct Migrator;
 
@@ -8,7 +9,8 @@ pub struct Migrator;
 impl MigratorTrait for Migrator {
     fn migrations() -> Vec<Box<dyn MigrationTrait>> {
         vec![
-            Box::new(m20221110_034016_create_film_table::Migration),
+            Box::new(create_category_table::Migration),
+            Box::new(create_film_table::Migration),
         ]
     }
 }
